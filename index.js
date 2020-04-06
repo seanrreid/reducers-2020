@@ -590,3 +590,24 @@ const newString = letterArray.reduce(reducerCallback, '');
 
 console.log('New string is:', newString);
 console.log('total is:', total);
+
+// (state, action) = newState
+const stateReducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD':
+      return state + action.item;
+    case 'RESET':
+      return '';
+    default:
+      return state;
+  }
+};
+
+// With a Global STORE items
+let wordStore = '';
+wordStore = stateReducer(wordStore, { type: 'ADD', item: 'r' });
+wordStore = stateReducer(wordStore, { type: 'ADD', item: 'e' });
+wordStore = stateReducer(wordStore, { type: 'ADD', item: 'd' });
+wordStore = stateReducer(wordStore, { type: 'ADD', item: 'u' });
+wordStore = stateReducer(wordStore, { type: 'ADD', item: 'x' });
+console.log('word store is:', wordStore);
